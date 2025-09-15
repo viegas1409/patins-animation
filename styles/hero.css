@@ -4,6 +4,11 @@ section.hero {
   padding: 2.5rem 2rem;
   margin-inline: auto;
 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+
   & h1 {
     max-width: 40rem;
   }
@@ -20,16 +25,18 @@ section.hero {
   & h1 span:nth-child(4) {
     color: var(--snitap-sky-mid);
   }
+
   & h1 span:nth-child(2) {
     color: var(--snitap-joy-mid);
   }
+
   & h1 span:nth-child(3) {
     color: var(--snitap-leaf-mid);
   }
 
   & h1 span {
     display: block;
-    animation: slideUp 6s infinite ease;
+    animation: slideUp 5s 2s infinite ease;
   }
 
   /* buttons */
@@ -42,15 +49,12 @@ section.hero {
       display: flex;
       align-items: center;
       gap: .75rem;
-
-      
       border-radius: 5rem;
-
       transition: scale 350ms;
 
       &.buy {
-       padding: 1.5rem 3rem;
-       background-color: var(--snitap-sun);
+        padding: 1.5rem 3rem;
+        background-color: var(--snitap-sun);
       }
 
       &.play span {
@@ -66,24 +70,93 @@ section.hero {
     }
 
     & .shadow {
-      box-shadow: 
-      0 2px 5px rgb(0 0 0 / .1),
-      0 9px 9px rgb(0 0 0 / .09),
-      0 20px 12px rgb(0 0 0 / .05),
-      0 36px 15px rgb(0 0 0 / .01)
-      ;
+      box-shadow:
+        0 2px 5px rgb(0 0 0 / .1),
+        0 9px 9px rgb(0 0 0 / .09),
+        0 20px 12px rgb(0 0 0 / .05),
+        0 36px 15px rgb(0 0 0 / .01);
+    }
+  }
 
+  /* patins + círculo azul + estrelas */
+  & > div:nth-child(2) {
+    display: block;
+    width: 100%;
+    max-width: 30.5rem;
+    height: 30.5rem;
+
+    & .content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    & img {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transform: translateX(200%);
+      animation: slideInTogether 3s ease forwards;
+    }
+
+    /* Círculo azul */
+    & img[src*="ellipse"] {
+      width: 94%;
+      top: 3%;
+      left: 3%;
+      z-index: 0;
+      animation-delay: 0.1s;
+    }
+
+    /* Patins */
+    & img[src*="patins-image"] {
+      width: 100%;
+      z-index: 1;
+      animation-delay: 0.2s;
+    }
+
+    /* Estrela esquerda */
+    & img[src*="Stars 1"] {
+      max-width: 5.5rem;
+      top: 30%;
+      left: 0;
+      z-index: 2;
+      animation-delay: 0.3s;
+    }
+
+    /* Estrela direita */
+    & img[src*="Stars 2"] {
+      max-width: 2.5rem;
+      right: 0;
+      bottom: 35%;
+      z-index: 2;
+      animation-delay: 0.4s;
     }
   }
 }
 
-@keyframes slideUp{
-  /* radical static */
+/* Animação sincronizada */
+@keyframes slideInTogether {
+  0% {
+    transform: translateX(200%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animação de texto */
+@keyframes slideUp {
   0%, 22% {
     transform: translateY(0);
   }
 
-  /* divertida in */
   23% {
     transform: translateY(calc(-5rem - 15px));
   }
@@ -99,51 +172,46 @@ section.hero {
   29% {
     transform: translateY(calc(-5rem + 5px));
   }
-  
 
-  /* divertida static */
   33%, 55% {
     transform: translateY(-5rem);
   }
 
-  /* saudável in */
- 56% {
-  transform: translateY(calc(-10rem - 15px));
- }
+  56% {
+    transform: translateY(calc(-10rem - 15px));
+  }
 
   58% {
-  transform: translateY(calc(-10rem + 10px));
- }
+    transform: translateY(calc(-10rem + 10px));
+  }
 
   60% {
-  transform: translateY(calc(-10rem - 5px));
- }
+    transform: translateY(calc(-10rem - 5px));
+  }
 
-   62% {
-  transform: translateY(calc(-10rem + 5px));
- }
+  62% {
+    transform: translateY(calc(-10rem + 5px));
+  }
 
-  /* saudável static */
   66%, 88% {
     transform: translateY(-10rem);
   }
 
-  /* radical in */
-   89% {
-  transform: translateY(calc(-15rem - 15px));
- }
+  89% {
+    transform: translateY(calc(-15rem - 15px));
+  }
 
   91% {
-  transform: translateY(calc(-15rem + 10px));
- }
+    transform: translateY(calc(-15rem + 10px));
+  }
 
   93% {
-  transform: translateY(calc(-15rem - 5px));
- }
+    transform: translateY(calc(-15rem - 5px));
+  }
 
-   95% {
-  transform: translateY(calc(-15rem + 5px));
- }
+  95% {
+    transform: translateY(calc(-15rem + 5px));
+  }
 
   100% {
     transform: translateY(-15rem);
