@@ -1,3 +1,14 @@
+header.top {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: 2.5rem 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 section.hero {
   max-width: 80rem;
   width: 100%;
